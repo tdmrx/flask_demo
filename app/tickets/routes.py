@@ -44,7 +44,10 @@ def set_status():
     
     ticket_id = request.form.get("id","")
     status = request.form.get("status","")
-    ticket = Ticket.query.filter(Ticket.id == ticket_id).first()
+    if session["role"] == "admin":
+        ticket = Ticket.query.filter(Ticket.id == ticket_id).first()
+    else:
+        ticket = Ticket.query.filter(Ticket.id == ticket_id,Ticket.role == session["role"]).first()
     if ticket:
         ticket.status = status
         try:
