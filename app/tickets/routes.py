@@ -56,7 +56,7 @@ def set_status():
         except:
             flash("Error","error")
     else:
-        flash("Success","success")
+        flash("Ticket not found","error")
         
     return redirect(url_for("tickets.index"))
 
