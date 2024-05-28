@@ -14,7 +14,7 @@ def index():
     return render_template('tickets/list.html', tickets=tickets,role=session["role"])
 
 @bp.route('/tickets/my')
-@roles.logged
+@roles.allow(groups=["user"])
 def user_tickets():
     tickets = Ticket.query.filter(Ticket.from_user == session["username"])
     return render_template('tickets/user_list.html', tickets=tickets,role=session["role"])
