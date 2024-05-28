@@ -1,4 +1,4 @@
-from flask import g, request, redirect, url_for,session,render_template,flash
+from flask import request, redirect, url_for,session,render_template,flash
 from app.extensions.db import db_session
 from app.tickets import bp
 from app.extensions import roles

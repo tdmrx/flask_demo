@@ -1,8 +1,6 @@
-from flask import Flask, render_template, redirect, url_for, request,session,flash
-from app.extensions.db import db_session
+from flask import render_template, redirect, url_for, request,session,flash
 from app.login import bp
 from app.models.user import User
-
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():

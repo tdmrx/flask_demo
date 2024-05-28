@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker, declarative_base,relationship
+from sqlalchemy.orm import scoped_session, sessionmaker, declarative_base,Session
 
 engine = None
-db_session = None
+db_session : Session = None
 Base = None
 
 def init_db(url):
