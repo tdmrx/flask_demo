@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}Home {% endblock %}
+{% block head %}{{ super() }}{% endblock %}
+{% block content %}
+<main>
+  {% if session["role"] == "admin" %}
+    <p>Your role: {{ session["role"] }}</p>
+    <ul>
+      <li>
+        <a href="{{ url_for("users.index") }}">Users management</a>
+      </li>
+      <li>
+        <a href="{{ url_for("tickets.index") }}">Tickets management</a>
+      </li>
+    </ul>
+  {% elif session["role"] == "manager" %}
+    <p>Your role: {{ session["role"] }}</p>
+    <ul>
+      <li>
+        <a href="{{ url_for("tickets.index") }}">View tickets</a>
+      </li>
+    </ul>
+    {% elif session["role"] == "analyst" %}
+    <p>Your role: {{ session["role"] }}</p>
+    <ul>
+      <li>
+        <a href="{{ url_for("tickets.index") }}">View tickets</a>
+      </li>
+    </ul>
+  {% elif session["role"] == "user" %}
+    <p>Your role: {{ session["role"] }}</p>
+    <ul>
+      <li>
+        <a href="{{ url_for("tickets.user_tickets") }}">My tickets</a>
+      </li>
+      <li>
+        <a href="{{ url_for("tickets.create_ticket") }}">Create ticket</a>
+      </li>
+    </ul>
+  {% endif %}
+</main>
+  {% endblock %}
+ 

@@ -1,0 +1,31 @@
+
+{% extends "layout.html" %}
+{% block title %}Create ticket {% endblock %}
+{% block head %}{{ super() }}{% endblock %}
+{% block content %}
+<h2>create ticket</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  <ul class=flashes>
+  {% for category, message in messages %}
+    <li class="{{ category }}">{{ message }}</li>
+  {% endfor %}
+  </ul>
+{% endif %}
+{% endwith %}
+<form action="" method="post">
+<textarea name="text" value="" placeholder="text" required></textarea>
+<br><br>
+<label for="role">target:</label>
+
+<select name="target" required>
+
+  <option value="admin">admin</option>
+  <option value="manager">manager</option>
+  <option value="analyst">analyst</option>
+
+</select>
+<br><br>
+        <input  type="submit" name="submit_ticket" value="Send">
+      </form>
+{% endblock %}

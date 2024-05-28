@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}Tickets{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 5px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  td form {
+    display: table-row;
+  }
+  </style>
+{% endblock %}
+{% block content %}
+  <h1>tickets</h1>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class=flashes>
+        {% for category, message in messages %}<li class="{{ category }}">{{ message }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <table>
+    <tr>
+      <th>from</th>
+      <th>to</th>
+      <th>text</th>
+      <th>status</th>
+    </tr>
+    {% if tickets %}
+      {% for ticket in tickets %}
+        <tr>
+          <td>{{ ticket.from_user }}</td>
+          <td>{{ ticket.target }}</td>
+          <td>{{ ticket.text }}</td>
+          <td>{{ ticket.status }}</td>
+        </tr>
+      {% endfor %}
+    {% endif %}
+  </table>
+{% endblock %}
